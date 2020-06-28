@@ -19,9 +19,6 @@ done
 
 # nix installieren (nicht auf NIXOS)
 if [ ! -f /etc/NIXOS ]; then
-        user_id=$(id -u)
-        group=$(id -g)
-	install -d -m -o $user_id -g $group /nix
         source <(curl -s -N -L https://nixos.org/nix/install)
 	source /home/$USER/.nix-profile/etc/profile.d/nix.sh
 	echo "READY: Nix is now in your path"
