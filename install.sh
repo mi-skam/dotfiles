@@ -2,7 +2,8 @@
 
 set -euo pipefail
 
-# setup
+
+INSTALL_PATH=$HOME/.dotfiles
 
 function on_wsl {
 	uname -a | grep -q microsoft 
@@ -26,6 +27,9 @@ function get_release {
 # if there is more than one argument, then access $1
 [ "$#" -ge 1 ] && release=$1; shift || get_release
 
+# checkout repo
+[ ! -d $INSTALL_PATH ] && git clone https://github.com/mi-skam/dotfiles $INSTALL_PATH
+
 # nix installieren (nicht auf NIXOS)
 if [ ! -f /etc/NIXOS ]; then
         source <(curl -s -N -L https://nixos.org/nix/install)
@@ -43,6 +47,8 @@ echo "READY: Home-Manager is now in your path"
 # nix und home-manager konfigurationen verlinken
 rm -rf ~/.config/nixpkgs/*
 
+pushd $INSTALL_PATH
+
 ln -snf "$(pwd)/config.nix" ~/.config/nixpkgs/config.nix
 ln -snf "$(pwd)/home/common.nix" ~/.config/nixpkgs/common.nix
 
@@ -53,3 +59,4 @@ else
 fi
 echo "READY: Configurations are now linked to ~/.config/nixpkgs"
 home-manager switch
+popd
