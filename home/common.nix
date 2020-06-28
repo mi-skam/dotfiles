@@ -43,7 +43,7 @@
     
     htop lazygit neofetch
 
-    jq
+    curl jq shellcheck
   ];
 
   home.sessionVariables = {
