@@ -2,14 +2,18 @@
 
 # setup
 
-read -p "Nix, Home-Manager release? (master, release-20.03,...) " release
+function on_wsl {
+	uname -a | grep -q microsoft 
+}
+
+read -p "Nix, Home-Manager release? (master, release-20.03,...) " answer
 
 while true
 do
-  case $release in
-    master* ) nix-channel --add https://github.com/rycee/home-manager/archive/master.tar.gz home-manager
+  case $answer in
+    master* ) release=master.tar.gz
 	      break;;
-    release-* ) nix-channel --add https://github.com/rycee/home-manager/archive/$answer.tar.gz home-manager
+    release-* ) release=$answer.tar.gz
 	      break;;
 
 	* ) exit;;
@@ -24,7 +28,20 @@ if [ ! -f /etc/NIXOS ]; then
 	echo "READY: Nix is now in your path"
 fi
 # home-manager installieren
+nix-channel --add https://github.com/rycee/home-manager/archive/$release home-manager
 nix-channel --update
 export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH
 nix-shell '<home-manager>' -A install
 echo "READY: Home-Manager is now in your path"
+
+# nix und home-manager konfigurationen verlinken
+ln -snf "$(pwd)/config.nix" ~/.config/nixpkgs/config.nix
+ln -snf "$(pwd)/home/common.nix" ~/.config/nixpkgs/common.nix
+
+if on_wsl; then
+	ln -snf "$(pwd)/home/wsl.nix" ~/.config/nixpkgs/home.nix
+else 
+	ln -snf "$(pwd)/home/linux.nix" ~/.config/nixpkgs/home.nix
+fi
+echo "READY: Configurations are now linked to ~/.config/nixpkgs"
+home-manager switch
