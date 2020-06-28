@@ -4,6 +4,7 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
   programs = {
+    bash.enable = true;
     bat.enable = true;
     emacs = {
       enable = true;
@@ -31,6 +32,10 @@
   home.packages = with pkgs; [
     cacert fd ripgrep tldr 
   ];
+
+  home.sessionVariables = {
+    EDITOR = "nvim";
+  };
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
