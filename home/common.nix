@@ -6,8 +6,10 @@
   programs = {
     bash = {
       enable = true;
+      enableAutojump = true;
       initExtra = ''
-        . "/home/plumps/.nix-profile/etc/profile.d/hm-session-vars.sh"
+	      . /home/plumps/.nix-profile/etc/profile.d/nix.sh
+        . /home/plumps/.nix-profile/etc/profile.d/hm-session-vars.sh
       '';
     };
     bat.enable = true;
