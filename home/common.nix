@@ -40,6 +40,10 @@
 
   home.packages = with pkgs; [
     cacert fd ripgrep tldr 
+    
+    htop lazygit neofetch
+
+    jq
   ];
 
   home.sessionVariables = {
