@@ -41,6 +41,8 @@ nix-shell '<home-manager>' -A install
 echo "READY: Home-Manager is now in your path"
 
 # nix und home-manager konfigurationen verlinken
+rm -rf ~/.config/nixpkgs/*
+
 ln -snf "$(pwd)/config.nix" ~/.config/nixpkgs/config.nix
 ln -snf "$(pwd)/home/common.nix" ~/.config/nixpkgs/common.nix
 
