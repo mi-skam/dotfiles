@@ -4,7 +4,12 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
   programs = {
-    bash.enable = true;
+    bash = {
+      enable = true;
+      initExtra = ''
+        . "/home/plumps/.nix-profile/etc/profile.d/hm-session-vars.sh"
+      '';
+    };
     bat.enable = true;
     emacs = {
       enable = true;
