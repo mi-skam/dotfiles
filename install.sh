@@ -6,8 +6,17 @@ set -euo pipefail
 
 INSTALL_PATH=$HOME/.dotfiles
 
+resetcolor="tput sgr0"
 
 ### HELPER
+
+function ready {
+	message=$1
+	green='\033[0;32m'
+	yellow='\033[1;33m'
+	no_color='\033[0m'
+	echo -e "${green}READY:${yellow} $message${no_color}"
+}
 
 function on_wsl {
 	uname -a | grep -q microsoft 
@@ -42,7 +51,7 @@ pushd $INSTALL_PATH
 if [ ! -f /etc/NIXOS ]; then
         source <(curl -s -N -L https://nixos.org/nix/install)
 	source /home/$USER/.nix-profile/etc/profile.d/nix.sh
-	echo "READY: Nix is now in your path"
+	ready "Nix is now in your path"
 fi
 
 # home-manager installieren
@@ -50,7 +59,7 @@ nix-channel --add https://github.com/rycee/home-manager/archive/$release.tar.gz 
 nix-channel --update
 export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH
 nix-shell '<home-manager>' -A install
-echo "READY: Home-Manager is now in your path"
+ready "Home-Manager is now in your path"
 
 # nix und home-manager konfigurationen verlinken
 rm -rf ~/.config/nixpkgs/*
@@ -63,7 +72,7 @@ if on_wsl; then
 else 
 	ln -snf "$(pwd)/home/linux.nix" ~/.config/nixpkgs/home.nix
 fi
-echo "READY: Configurations are now linked to ~/.config/nixpkgs"
+ready "Configurations are now linked to ~/.config/nixpkgs"
 home-manager switch
 
 ### END
