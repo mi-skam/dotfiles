@@ -10,6 +10,12 @@ in
     imports = [ ./common.nix ];
 
     programs.bash = {
+      initExtra = ''
+        if [ -f  $HOME/.nix-profile/etc/profile.d/nix.sh ]; then
+          . $HOME/.nix-profile/etc/profile.d/nix.sh
+        fi
+      '';
+
       shellAliases = {
         nmap = "'/windows/c/Program Files (x86)/Nmap/nmap.exe'";
       };

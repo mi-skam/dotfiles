@@ -8,9 +8,11 @@
       enable = true;
       enableAutojump = true;
       initExtra = ''
-	      . /home/plumps/.nix-profile/etc/profile.d/nix.sh
-        . /home/plumps/.nix-profile/etc/profile.d/hm-session-vars.sh
+        . $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
       '';
+      shellAliases = {
+        hm = "home-manager";
+      };
     };
     bat.enable = true;
     emacs = {
