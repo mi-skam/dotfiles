@@ -39,13 +39,13 @@ function get_release {
 }
 
 ### START
-pushd $INSTALL_PATH
 
 # if there is more than one argument, then access $1, otherwise ask the user
 [ "$#" -ge 1 ] && release=$1; shift || get_release
 
 # checkout dotfiles repo
 [ ! -d $INSTALL_PATH ] && git clone https://github.com/mi-skam/dotfiles $INSTALL_PATH
+pushd $INSTALL_PATH
 
 # nix installieren (nicht auf NIXOS)
 if [ ! -f /etc/NIXOS ]; then
