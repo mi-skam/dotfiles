@@ -15,5 +15,7 @@ curl -fsSL https://raw.githubusercontent.com/mi-skam/dotfiles/master/install.sh 
 ```bash
 git clone https://github.com/mi-skam/dotfiles
 cd dotfiles
-./install
+./install # or...
+./install master # or ..
+./install release-20.03
 ```
