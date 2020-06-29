@@ -18,9 +18,6 @@
     emacs = {
       enable = true;
     };
-    firefox = {
-      enable = true;
-    };
     git = { 
       enable = true;
       userName = "mi-skam";
