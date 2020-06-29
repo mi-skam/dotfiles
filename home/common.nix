@@ -9,6 +9,7 @@
       enableAutojump = true;
       initExtra = ''
         . $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
+        PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ "
       '';
       shellAliases = {
         hm = "home-manager";
