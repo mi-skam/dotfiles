@@ -5,6 +5,10 @@ let
     exec /windows/c/Program\ Files/Git/mingw64/libexec/git-core/git-credential-manager.exe $@
   '';
 
+  getDisplay = pkgs.writeScriptBin "gd" ''
+    #!${pkgs.stdenv.shell}
+    awk '/nameserver/ { print $2 }' < /etc/resolv.conf
+  '';
 in
 {
     imports = [ ./common.nix ];
@@ -14,6 +18,7 @@ in
         if [ -f  $HOME/.nix-profile/etc/profile.d/nix.sh ]; then
           . $HOME/.nix-profile/etc/profile.d/nix.sh
         fi
+        export DISPLAY=$(${getDisplay}/bin/gd):0.0
       '';
 
       shellAliases = {
@@ -27,7 +32,6 @@ in
     };
 
     home.sessionVariables = {
-      DISPLAY = "172.24.224.1:0";
       PULSE_SERVER = "tcp:ohmy";
     };
 
