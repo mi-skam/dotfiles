@@ -19,3 +19,21 @@ cd dotfiles
 ./install master # or ..
 ./install release-20.03
 ```
+
+## Post-Install
+
+On Non-Nixos systems running on WSL we need to create some entries in wsl.conf
+
+1. Create the wsl.conf
+
+```bash
+(cat <<HERE
+[automount]
+root = "/windows"
+HERE
+    ) | sudo tee /etc/wsl.conf
+```
+2. Kill the wsl instance
+```powershell
+wsl -t <DistributionName>
+```
