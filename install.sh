@@ -83,7 +83,7 @@ else
 	ln -snf "$(pwd)/home/linux.nix" ~/.config/nixpkgs/home.nix
 fi
 ready "Configurations are now linked to ~/.config/nixpkgs"
-home-manager switch
+home-manager -b bak switch
 
 ### END
 popd
