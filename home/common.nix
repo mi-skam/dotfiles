@@ -23,6 +23,12 @@
       enable = true;
       userName = "mi-skam";
       userEmail = "maksim.codes@mailbox.org";
+      lfs.enable = true;
+      extraConfig = {
+        core = {
+          git.pull = "true";
+        };
+      };
     };
     neovim = {
       enable = true;
@@ -41,7 +47,7 @@
     
     htop lazygit neofetch
 
-    curl jq shellcheck
+    curl jq pypi2nix shellcheck
   ];
 
   home.sessionVariables = {
