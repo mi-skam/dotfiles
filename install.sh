@@ -20,6 +20,13 @@ function on_wsl() {
 	uname -a | grep -q microsoft
 }
 
+function which_init() {
+	init=$(ps -q 1 -o cmd=)
+	echo "$init"
+}
+
+
+
 function get_release() {
 	read -r -p "Nix, Home-Manager release? (master, release-20.03,...) " answer
 
@@ -77,8 +84,14 @@ rm -rf ~/.config/nixpkgs/*
 ln -snf "$(pwd)/config.nix" ~/.config/nixpkgs/config.nix
 ln -snf "$(pwd)/home/common.nix" ~/.config/nixpkgs/common.nix
 
+
 if on_wsl; then
-	ln -snf "$(pwd)/home/wsl.nix" ~/.config/nixpkgs/home.nix
+	init=$(which_init)
+	if [ "$init" == "systemd" ]; then
+		ln -snf "$(pwd)/home/wsl-systemd.nix" ~/.config/nixpkgs/home.nix
+	else
+		ln -snf "$(pwd)/home/wsl.nix" ~/.config/nixpkgs/home.nix
+	fi
 else
 	ln -snf "$(pwd)/home/linux.nix" ~/.config/nixpkgs/home.nix
 fi
