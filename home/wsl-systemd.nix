@@ -1,5 +1,8 @@
 { config, pkgs, ... }:
 {
-    imports = [ ./wsl.nix ];
+  imports = [ 
+    ./wsl.nix
+    ./services/lorri.nix
+  ];
 
 }
