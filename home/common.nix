@@ -1,6 +1,15 @@
 { config, pkgs, ... }:
 
 {
+  nixpkgs.overlays = [
+    (import (builtins.fetchTarball {
+      url = https://github.com/nix-community/emacs-overlay/archive/master.tar.gz;
+    }))
+  ];
+
+  fonts.fontconfig.enable = true; 
+
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
   programs = {
@@ -18,6 +27,7 @@
     bat.enable = true;
     emacs = {
       enable = true;
+      package = pkgs.emacsGit;
     };
     git = { 
       enable = true;
@@ -48,6 +58,10 @@
     htop lazygit neofetch
 
     curl jq pypi2nix shellcheck
+
+    fira-code
+
+    nodejs-12_x
   ];
 
   home.sessionVariables = {
