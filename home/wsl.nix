@@ -2,7 +2,7 @@
 let
   gitCredentialManager = pkgs.writeScriptBin "git-credential-manager" ''
     #!${pkgs.stdenv.shell}
-    exec /windows/c/Program\ Files/Git/mingw64/libexec/git-core/git-credential-manager.exe $@
+    exec /mnt/c/Program\ Files/Git/mingw64/libexec/git-core/git-credential-manager.exe $@
   '';
 
   getDisplay = pkgs.writeScriptBin "gd" ''
