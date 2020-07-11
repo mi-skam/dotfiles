@@ -65,6 +65,20 @@
         set number
       '';
     };
+    ssh = {
+      enable = true;
+      matchBlocks = {
+        "web1.my" = {
+          hostname = "web1.miskam.xyz";
+          user = "admin";
+        };
+        "web2.my" = {
+          hostname = "web2.miskam.xyz";
+          user = "plumps";
+          port = 22022;
+        };
+      };
+    };
   };
 
   home.packages = with pkgs; [
