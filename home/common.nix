@@ -18,7 +18,22 @@
       enableAutojump = true;
       initExtra = ''
         . $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
-        PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ "
+        . $HOME/.nix-profile/etc/bash_completion.d/git-prompt.sh
+
+        BLACK="\[\033[0;30m\]"
+        BLUE="\[\033[0;34m\]"
+        GREEN="\[\033[0;32m\]"
+        CYAN="\[\033[0;36m\]"
+        RED="\[\033[0;31m\]"
+        PURPLE="\[\033[0;35m\]"
+        BROWN="\[\033[0;33m\]"
+        YELLOW="\[\033[1;33m\]"
+        WHITE="\[\033[1;37m\]"
+        NO_COLOUR="\[\033[0m\]"
+
+        export GIT_PS1_SHOWDIRTYSTATE=1
+
+        PS1="\u $BLUE\w$NO_COLOUR$GREEN\$(__git_ps1)$NO_COLOUR $RED❯$YELLOW❯$PURPLE❯$NO_COLOUR \$ "
       '';
       shellAliases = {
         hm = "home-manager";
