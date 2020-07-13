@@ -53,6 +53,9 @@
         core = {
           git.pull = "true";
         };
+        pull = {
+          rebase = "true";
+        };
       };
     };
     neovim = {
