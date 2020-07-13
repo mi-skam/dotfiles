@@ -42,7 +42,7 @@
     bat.enable = true;
     emacs = {
       enable = true;
-      package = pkgs.emacsGit;
+      # package = pkgs.emacsGit;
     };
     git = { 
       enable = true;
