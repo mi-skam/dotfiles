@@ -9,7 +9,11 @@
 
   fonts.fontconfig.enable = true; 
 
-
+  home.file = {
+    ".npmrc".text = ''
+      prefix=/home/plumps/.npm-global
+    '';
+  };
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
   programs = {
@@ -34,6 +38,8 @@
         export GIT_PS1_SHOWDIRTYSTATE=1
 
         PS1="\u $BLUE\w$NO_COLOUR$GREEN\$(__git_ps1)$NO_COLOUR $RED❯$YELLOW❯$PURPLE❯$NO_COLOUR \$ "
+
+        export PATH=$HOME/.npm-global/bin:$PATH
       '';
       shellAliases = {
         hm = "home-manager";
@@ -91,6 +97,8 @@
 
     curl jq pypi2nix shellcheck
 
+    ranger
+
     fira-code
 
     nodejs-12_x
@@ -114,6 +122,4 @@
   # the Home Manager release notes for a list of state version
   # changes in each release.
   home.stateVersion = "20.09";
-
-  services.lorri.enable = true;
 }
