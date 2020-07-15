@@ -12,7 +12,7 @@ let
 
   sshRelay = pkgs.writeScriptBin "ssh-relay" ''
     #!${pkgs.stdenv.shell}
-    setsid ${pkgs.socat}/bin/socat UNIX-LISTEN:$SSH_AUTH_SOCK,fork EXEC:"/mnt/c/Users/plumps/bin/npiperelay.exe -ei -s //./pipe/openssh-ssh-agent",nofork &  >/dev/null 2>&1
+    setsid ${pkgs.socat}/bin/socat UNIX-LISTEN:$SSH_AUTH_SOCK,fork EXEC:"/mnt/c/npiperelay.exe -ei -s //./pipe/openssh-ssh-agent",nofork &  >/dev/null 2>&1
   '';
 in
 {
