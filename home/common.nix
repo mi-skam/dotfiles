@@ -76,6 +76,7 @@
     };
     ssh = {
       enable = true;
+      forwardAgent = true;
       matchBlocks = {
         "web1.my" = {
           hostname = "web1.miskam.xyz";
@@ -95,7 +96,7 @@
     
     htop lazygit neofetch
 
-    curl jq pypi2nix shellcheck
+    curl jq pypi2nix shellcheck dos2unix
 
     ranger
 
