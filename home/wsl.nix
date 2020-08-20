@@ -33,10 +33,11 @@ in
         fi
 
 
+
       '';
 
       shellAliases = {
-        nmap = "'/windows/c/Program Files (x86)/Nmap/nmap.exe'";
+        nmap = "'/mnt/c/Program Files (x86)/Nmap/nmap.exe'";
       };
     };
     programs.git = { 

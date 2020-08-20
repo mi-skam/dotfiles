@@ -1,5 +1,6 @@
 { config, pkgs, ... }:
 
+with pkgs;
 {
   nixpkgs.overlays = [
     (import (builtins.fetchTarball {
@@ -24,6 +25,9 @@
         . $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
         . $HOME/.nix-profile/etc/bash_completion.d/git-prompt.sh
 
+        eval "$(${direnv}/bin/direnv hook bash)"
+
+
         BLACK="\[\033[0;30m\]"
         BLUE="\[\033[0;34m\]"
         GREEN="\[\033[0;32m\]"
@@ -46,6 +50,10 @@
       };
     };
     bat.enable = true;
+    direnv = {
+      enable = true;
+      enableNixDirenvIntegration = true;
+    };
     emacs = {
       enable = true;
       # package = pkgs.emacsGit;
@@ -96,13 +104,13 @@
     
     htop lazygit neofetch
 
-    curl jq pypi2nix shellcheck dos2unix
+    curl jq pypi2nix shellcheck dos2unix 
 
-    ranger
+    ranger youtube-dl
 
     fira-code
 
-    nodejs-12_x
+    nodejs-12_x racket
   ];
 
   home.sessionVariables = {
