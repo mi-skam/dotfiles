@@ -24,6 +24,7 @@ in
           . $HOME/.nix-profile/etc/profile.d/nix.sh
         fi
         export DISPLAY=$(${getDisplay}/bin/gd):0.0
+        export BROWSER=wslview
 
         export SSH_AUTH_SOCK=$HOME/.ssh/agent.sock
         ss -a | grep -q $SSH_AUTH_SOCK
@@ -41,6 +42,7 @@ in
       };
     };
     programs.git = { 
+      enable = true;
       extraConfig = {
         credential = { helper = "${gitCredentialManager}/bin/git-credential-manager"; };
       };

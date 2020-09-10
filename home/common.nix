@@ -102,9 +102,9 @@ with pkgs;
   home.packages = with pkgs; [
     cacert fd ripgrep tldr 
     
-    htop lazygit neofetch
+    htop lazygit gitAndTools.gh neofetch zip unzip
 
-    curl jq pypi2nix shellcheck dos2unix 
+    curl jq pypi2nix nixfmt shellcheck dos2unix imagemagick
 
     ranger youtube-dl
 
