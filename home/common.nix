@@ -111,6 +111,8 @@ with pkgs;
     fira-code
 
     nodejs-12_x racket
+
+    xdg_utils firefox
   ];
 
   home.sessionVariables = {

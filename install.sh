@@ -67,9 +67,14 @@ function install_hm() {
 
 ### START
 
-# if there is more than one argument then access $1, otherwise ask the user
-[ "$#" -ge 1 ] && release=$1
-shift || get_release
+# if there is more than one argument then interpret $1 as an option
+[ "$#" -ge 1 ] && option=$1 || option="ask"
+
+# Get release by asking or providing $1
+[ $option == "ask" ] && get_release || release="$option"
+
+# Assert release is at least set to master
+[ -z "$release" ] && release="master"
 
 # checkout dotfiles repo
 [ ! -d "$INSTALL_PATH" ] && git clone https://github.com/mi-skam/dotfiles "$INSTALL_PATH"

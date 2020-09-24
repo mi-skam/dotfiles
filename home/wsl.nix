@@ -38,6 +38,7 @@ in
       '';
 
       shellAliases = {
+        code = "'/mnt/c/Program Files/Microsoft VS Code/bin/code'";
         nmap = "'/mnt/c/Program Files (x86)/Nmap/nmap.exe'";
       };
     };
