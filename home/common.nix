@@ -59,7 +59,7 @@ with pkgs;
       # package = pkgs.emacsGit;
     };
     git = { 
-      enable = false;
+      enable = true;
       userName = "mi-skam";
       userEmail = "maksim.codes@mailbox.org";
       lfs.enable = true;
