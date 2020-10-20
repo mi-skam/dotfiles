@@ -2,7 +2,7 @@
 {
   imports = [ 
     ./common.nix 
-    ./services/lorri.nix
+    # ./services/lorri.nix
   ];
 
 }
