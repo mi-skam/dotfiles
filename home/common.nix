@@ -12,7 +12,7 @@ with pkgs;
 
   home.file = {
     ".npmrc".text = ''
-      prefix=/home/plumps/.npm-global
+      prefix=$HOME/.npm-global
     '';
   };
   # Let Home Manager install and manage itself.
@@ -118,11 +118,6 @@ with pkgs;
   home.sessionVariables = {
     EDITOR = "nvim";
   };
-
-  # Home Manager needs a bit of information about you and the
-  # paths it should manage.
-  home.username = "plumps";
-  home.homeDirectory = "/home/plumps";
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
