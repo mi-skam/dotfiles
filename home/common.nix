@@ -18,9 +18,9 @@ with pkgs;
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
   programs = {
+    autojump.enable = true;
     bash = {
       enable = true;
-      enableAutojump = true;
       initExtra = ''
         . $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
         . $HOME/.nix-profile/etc/bash_completion.d/git-prompt.sh
@@ -106,6 +106,8 @@ with pkgs;
 
     curl jq pypi2nix nixfmt shellcheck dos2unix imagemagick
 
+    borgbackup
+
     ranger youtube-dl
 
     fira-code
@@ -119,13 +121,8 @@ with pkgs;
     EDITOR = "nvim";
   };
 
-  # This value determines the Home Manager release that your
-  # configuration is compatible with. This helps avoid breakage
-  # when a new Home Manager release introduces backwards
-  # incompatible changes.
-  #
-  # You can update Home Manager without changing this value. See
-  # the Home Manager release notes for a list of state version
-  # changes in each release.
+  home.username = "$USER";
+  home.homeDirectory = builtins.toPath (builtins.getEnv "HOME");
+
   home.stateVersion = "20.09";
 }
