@@ -1,7 +1,7 @@
 # Shortcuts
 
 alias reload="source ~/.bash_profile"
-alias rebuild="cd $DOTFILES_DIR/playbook ;ansible-playbook -K --limit localhost main.yml"
+alias rebuild="ansible-playbook -K --limit localhost main.yml"
 alias _="sudo"
 alias g="git"
 alias rr="rm -rf"
