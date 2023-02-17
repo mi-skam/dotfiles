@@ -1,0 +1,17 @@
+- name: Check if homebrew is installed.
+  ansible.builtin.stat:
+    path: "/home/linuxbrew/.linuxbrew/Homebrew/bin/brew"
+  register: homebrew_installed
+  check_mode: false
+
+- name: Install homebrew.
+  ansible.builtin.shell:
+    cmd: |
+      sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+    creates: /home/linuxbrew/.linuxbrew/Homebrew/bin/brew
+  environment:
+    NONINTERACTIVE: "1"
+  when: not homebrew_installed.stat.exists
+
+- include_tasks: tap.yml
+- include_tasks: brew.yml

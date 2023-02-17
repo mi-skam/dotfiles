@@ -1,0 +1,27 @@
+---
+dependencies: []
+
+galaxy_info:
+  author: mi-skam
+  description: Deployment of dotfiles using stow.
+  company: None
+
+  license: license (GPL-2.0-or-later)
+
+  min_ansible_version: "2.2"
+
+  platforms:
+    - name: Debian
+      versions:
+        - 10
+    - name: Ubuntu
+      versions:
+        - 20.04
+    - name: AlmaLinux
+      versions:
+        - 8
+        - 9
+
+  galaxy_tags:
+    - dotfiles
+    - configuration

@@ -1,0 +1,13 @@
+# using SourceTree as git gui
+export VISUAL_GIT="stree"
+
+# macOS migrated to zsh, so we need to explicitly set bash deprecation warning
+
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
+# Raise limit for open files and processes
+
+ulimit -S -n 8192
+
+# Java
+JAVA_HOME="${JAVA_HOME:-/opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home}"

@@ -1,0 +1,130 @@
+---
+downloads: ~/.ansible-downloads/
+
+configure_dotfiles: true
+configure_terminal: true
+configure_osx: false
+
+# Set to 'true' to configure the Dock via dockutil.
+configure_dock: true
+dockitems_remove:
+  []
+  # - Launchpad
+  # - TV
+  # - Podcasts
+  # - "App Store"
+dockitems_persist: []
+# - name: "Sublime Text"
+#   path: "/Applications/Sublime Text.app/"
+#   pos: 5
+
+dotfiles_repo_local_destination: "{{ ansible_env.HOME }}/.dotfiles"
+
+dotfiles_repo: "https://github.com/mi-skam/dotfiles"
+dotfiles_repo_version: master
+dotfiles_repo_accept_hostkey: true
+dotfiles_repo_update: false
+
+dotfiles_stow_packages:
+  - direnv
+  - git
+  - micromamba
+  - prettier
+  - shell
+  - starship
+
+homebrew_installed_packages:
+  - direnv
+  - fd
+  - fnm
+  - fzf
+  - git
+  - git-lfs
+  - github/gh/gh
+  - gpg
+  - micromamba
+  - openssl
+  - rg
+  - rust
+  - starship
+  - stow
+  - syncthing
+  - topgrade
+  - tree
+  - wget
+  - yt-dlp
+  - zoxide
+
+flatpak_apps:
+  - com.google.Chrome
+  - org.mozilla.firefox
+  - com.visualstudio.code
+  - com.spotify.Client
+  - org.mozilla.Thunderbird
+  - org.keepassxc.KeePassXC
+  - org.libreoffice.LibreOffice
+  - org.gimp.GIMP
+  - com.discordapp.Discord
+  - com.mastermindzh.tidal-hifi
+  - org.videolan.VLC
+  - org.telegram.desktop
+  - org.qbittorrent.qBittorrent
+  - org.signal.Signal
+
+homebrew_taps:
+  - homebrew/core
+  - homebrew/cask
+  - epk/epk
+
+homebrew_cask_appdir: /Applications
+homebrew_cask_apps:
+  - blender
+  - discord
+  - firefox
+  - font-jetbrains-mono
+  - font-sf-mono-nerd-font
+  - gimp
+  - google-chrome
+  - karabiner-elements
+  - keepassxc
+  - libreoffice
+  - notion
+  - qbittorrent
+  - rawtherapee
+  - signal
+  - sourcetree
+  - spotify
+  - steam
+  - telegram
+  - tidal
+  - thunderbird
+  - tidal
+  - visual-studio-code
+  - vlc
+
+mas_installed_apps: []
+mas_email: ""
+mas_password: ""
+
+# Install packages from other package managers.
+# Note: You are responsible for making sure the required package managers are
+# installed, eg. through homebrew.
+composer_packages: []
+# - name: drush
+#   state: present # present/absent, default: present
+#   version: "^8.1" # default: N/A
+gem_packages: []
+# - name: bundler
+#   state: present # present/absent/latest, default: present
+#   version: "~> 1.15.1" # default: N/A
+npm_packages: []
+# - name: webpack
+#   state: present # present/absent/latest, default: present
+#   version: "^2.6" # default: N/A
+pip_packages: []
+# - name: mkdocs
+#   state: present # present/absent/latest, default: present
+#   version: "0.16.3" # default: N/A
+
+# Glob pattern to ansible task files to run after all other tasks are finished.
+post_provision_tasks: []

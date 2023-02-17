@@ -1,0 +1,4 @@
+---
+dotfiles_target: "{{ ansible_env.HOME }}"
+# parent dir of $DOTFILES/playbook -> $DOTFILES
+dotfiles_home: "{{ playbook_dir | dirname }}"

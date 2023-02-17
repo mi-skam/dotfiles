@@ -1,0 +1,14 @@
+layout_micromamba() {
+
+  if [ -n "$1" ]; then
+    if [ -f "$HOME/micromamba/etc/profile.d/micromamba.sh" ]; then
+      . "$HOME/micromamba/etc/profile.d/micromamba.sh"
+    fi
+    # Explicit environment name from layout command.
+    local env_name="$1"
+    micromamba activate ${env_name}
+  else
+    (echo >&2 No environment specified)
+    exit 1
+  fi
+}

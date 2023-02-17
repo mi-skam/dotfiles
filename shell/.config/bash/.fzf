@@ -1,0 +1,3 @@
+# Key bindings
+# ------------
+. "$DOTFILES_DIR/files/fzf-keybindings.bash"

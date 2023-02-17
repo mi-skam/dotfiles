@@ -1,0 +1,22 @@
+---
+homebrew_repo: https://github.com/Homebrew/brew
+
+homebrew_user_path: "/home/linuxbrew"
+homebrew_prefix: "{{ homebrew_user_path }}/.linuxbrew"
+homebrew_brew_bin_path: "{{ ansible_env.HOME }}/bin"
+
+homebrew_installed_packages: []
+
+homebrew_uninstalled_packages: []
+
+homebrew_upgrade_all_packages: false
+
+homebrew_taps:
+  - homebrew/core
+
+homebrew_use_brewfile: true
+homebrew_brewfile_dir: "~"
+
+homebrew_clear_cache: false
+
+homebrew_folders_additional: []

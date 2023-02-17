@@ -1,0 +1,5 @@
+playbook/config.yml
+
+# We install "most" roles from requirements
+playbook/roles/*
+!playbook/roles/miskam*

@@ -1,0 +1,25 @@
+# Change working directory to the top-most Finder window location
+
+function cdf() {
+  cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')"
+}
+
+# Dev
+
+d() {
+  $VISUAL ${1:-.}
+  $VISUAL_GIT ${1:-.}
+}
+
+# Open man page as PDF
+
+manpdf() {
+  docDir="$HOME/Documents/BSD Commands"
+  [[ ! -d $docDir ]] && mkdir -p "$docDir"
+  if [[ ! -f $docDir/$1.pdf ]]; then
+    man -t "$1" | pstopdf -i -o "$docDir/$1.pdf"
+    open "$docDir/$1.pdf"
+  else
+    open "$docDir/$1.pdf"
+  fi
+}

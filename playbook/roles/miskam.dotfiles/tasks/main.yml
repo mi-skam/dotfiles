@@ -1,0 +1,42 @@
+---
+- name: Simulate stow to find all conflicting files.
+  environment:
+    # add homebrew to the PATH, so that ansible can find stow.
+    PATH: "{{ ansible_env.PATH }}:/home/linuxbrew/.linuxbrew/bin:/opt/homebrew/bin"
+  ansible.builtin.shell: stow -n -t "{{ dotfiles_target }}" */
+  ignore_errors: true
+  args:
+    chdir: "{{ dotfiles_home}}"
+  register: stow_simulate
+  changed_when: false
+
+- name: Capturing the filenames from stow_simulate.
+  set_fact:
+    files_foreign: "{{ stow_simulate.stderr | regex_findall('existing target is neither a link nor a directory: (.+)', '\\1') }}"
+    files_conflict: "{{ stow_simulate.stderr | regex_findall('existing target is not owned by stow: (.+)', '\\1') }}"
+  when: stow_simulate.stderr is defined
+
+- name: Move foreign files away, that are not managed by stow.
+  ansible.builtin.file:
+    path: "{{ dotfiles_target }}/{{ item }}"
+    state: absent
+  loop: "{{ files_foreign }}"
+  when: files_foreign is defined
+
+- name: Move conflicting files away, that are not managed by stow.
+  ansible.builtin.file:
+    path: "{{ dotfiles_target }}/{{ item }}"
+    state: absent
+  loop: "{{ files_conflict }}"
+  when: files_conflict is defined
+
+- name: Deploy dotfiles.
+  environment:
+    # add homebrew to the PATH, so that ansible can find stow.
+    PATH: "{{ ansible_env.PATH }}:/home/linuxbrew/.linuxbrew/bin:/opt/homebrew/bin"
+  ansible.builtin.shell: stow -v -R -t "{{ dotfiles_target }}" "{{ item }}"
+  args:
+    chdir: "{{ dotfiles_home }}"
+  register: stow_deploy
+  with_items: "{{ dotfiles_stow_packages }}"
+  changed_when: stow_deploy.stderr | regex_search('LINK:')

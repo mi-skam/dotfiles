@@ -1,0 +1,4 @@
+export MAMBA_EXE="/home/linuxbrew/.linuxbrew/bin/micromamba"
+export MAMBA_ROOT_PREFIX="$HOME/micromamba"
+
+eval "$($MAMBA_EXE shell hook -s bash)"

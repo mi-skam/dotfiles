@@ -1,0 +1,34 @@
+---
+- hosts: all
+  name: Bootstrap system.
+  
+  vars_files:
+    - defaults.config.yml
+  
+  pre_tasks:
+    - name: Include playbook configuration.
+      ansible.builtin.include_vars: "{{ item }}"
+      with_fileglob:
+        - "{{ playbook_dir }}/config.yml"
+      tags: ['always']
+  
+
+  roles:
+    - role: elliotweiser.osx-command-line-tools
+      when: ansible_os_family == 'Darwin'
+      tags: ["bootstrap"]
+    - role: geerlingguy.mac.homebrew
+      when: ansible_os_family == 'Darwin'
+      tags: ["bootstrap"]
+    - role: miskam.linuxbrew
+      when: ansible_os_family == 'Debian' or ansible_os_family == 'RedHat'
+      tags: ["bootstrap"]
+    - role: miskam.dotfiles
+      when: configure_dotfiles
+      tags: ["dotfiles"]
+    - role: geerlingguy.mac.mas
+      when: ansible_os_family == 'Darwin' and (mas_installed_apps or mas_installed_app_ids)
+      tags: ["mas"]
+    - role: geerlingguy.mac.dock
+      when: ansible_os_family == 'Darwin' and configure_dock
+      tags: ["dock"]
