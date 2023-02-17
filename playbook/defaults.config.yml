@@ -43,6 +43,7 @@ homebrew_installed_packages:
   - github/gh/gh
   - gpg
   - micromamba
+  - node
   - openssl
   - rg
   - rust
@@ -101,6 +102,15 @@ homebrew_cask_apps:
   - tidal
   - visual-studio-code
   - vlc
+  # Quick Look Plugins
+  - "qlstephen"
+  - "qlmarkdown"
+  - "quicklook-json"
+  - "qlimagesize"
+  - "suspicious-package"
+  - "apparency"
+  - "quicklookase"
+  - "qlvideo"
 
 mas_installed_apps: []
 mas_email: ""
@@ -117,7 +127,12 @@ gem_packages: []
 # - name: bundler
 #   state: present # present/absent/latest, default: present
 #   version: "~> 1.15.1" # default: N/A
-npm_packages: []
+npm_packages:
+  - name: nodemon
+  - name: prettier
+  - name: npm-check
+  - name: local-web-server
+
 # - name: webpack
 #   state: present # present/absent/latest, default: present
 #   version: "^2.6" # default: N/A
