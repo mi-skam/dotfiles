@@ -11,6 +11,16 @@ This is my personal dotfiles repository. It contains configuration files for:
 
 It's based on homebrew for macOS and linuxbrew for Linux. It uses ansible for the installation.
 
+### TODO
+
+- [ ] Add more configuration files
+- [ ] Update the linuxbrew installation (especially the packages)
+
+Credits go to
+
+- [webpro](https://github.com/webpro/dotfiles/)
+- [geerlingguy](https://github.com/geerlingguy/mac-dev-playbook)
+
 ## Installation
 
 To install the dotfiles, run the following command:
