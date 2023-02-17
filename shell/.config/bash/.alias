@@ -1,11 +1,10 @@
 # Shortcuts
 
 alias reload="source ~/.bash_profile"
-alias rebuild="ansible-playbook -K --limit localhost main.yml"
+alias rebuild="cd $DOTFILES_DIR/playbook ;ansible-playbook -K --limit localhost main.yml"
 alias _="sudo"
 alias g="git"
 alias rr="rm -rf"
-alias show_path="echo $PATH | tr : '\n'"
 
 # not supported on bash, but on zsh
 if $(is-supported "alias -g"); then

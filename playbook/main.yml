@@ -1,17 +1,17 @@
 ---
 - hosts: all
   name: Bootstrap system.
-  
+
   vars_files:
     - defaults.config.yml
-  
+
   pre_tasks:
     - name: Include playbook configuration.
       ansible.builtin.include_vars: "{{ item }}"
       with_fileglob:
         - "{{ playbook_dir }}/config.yml"
       tags: ['always']
-  
+
 
   roles:
     - role: elliotweiser.osx-command-line-tools
@@ -32,3 +32,7 @@
     - role: geerlingguy.mac.dock
       when: ansible_os_family == 'Darwin' and configure_dock
       tags: ["dock"]
+
+  tasks:
+    - import_tasks: tasks/extra-packages.yml
+      tags: ['extra-packages']
