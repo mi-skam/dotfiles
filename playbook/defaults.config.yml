@@ -80,6 +80,7 @@ homebrew_taps:
 homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
   - blender
+  - barrier
   - discord
   - firefox
   - font-jetbrains-mono
@@ -100,6 +101,7 @@ homebrew_cask_apps:
   - tidal
   - thunderbird
   - tidal
+  - utm
   - visual-studio-code
   - vlc
   # Quick Look Plugins
