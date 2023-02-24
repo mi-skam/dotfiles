@@ -130,10 +130,11 @@ gem_packages: []
 #   state: present # present/absent/latest, default: present
 #   version: "~> 1.15.1" # default: N/A
 npm_packages:
-  - name: nodemon
-  - name: prettier
-  - name: npm-check
   - name: local-web-server
+  - name: nodemon
+  - name: npm-check
+  - name: prettier
+  - name: tailwindcss
 
 # - name: webpack
 #   state: present # present/absent/latest, default: present
