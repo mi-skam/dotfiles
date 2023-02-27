@@ -1,4 +1,13 @@
 ---
+- name: Clone dotfiles to dotfiles_home.
+  git:
+    repo: "{{ dotfiles_repo }}"
+    dest: "{{ dotfiles_repo_local }}"
+    version: "{{ dotfiles_repo_version }}"
+    accept_hostkey: "{{ dotfiles_repo_accept_hostkey }}"
+    force: "{{ dotfiles_repo_force }}"
+    update: "{{ dotfiles_repo_update }}"
+
 - name: Simulate stow to find all conflicting files.
   environment:
     # add homebrew to the PATH, so that ansible can find stow.
@@ -6,7 +15,7 @@
   ansible.builtin.shell: stow -n -t "{{ dotfiles_target }}" */
   ignore_errors: true
   args:
-    chdir: "{{ dotfiles_home}}"
+    chdir: "{{ dotfiles_repo_local }}"
   register: stow_simulate
   changed_when: false
 
@@ -36,7 +45,7 @@
     PATH: "{{ ansible_env.PATH }}:/home/linuxbrew/.linuxbrew/bin:/opt/homebrew/bin"
   ansible.builtin.shell: stow -v -R -t "{{ dotfiles_target }}" "{{ item }}"
   args:
-    chdir: "{{ dotfiles_home }}"
+    chdir: "{{ dotfiles_repo_local }}"
   register: stow_deploy
   with_items: "{{ dotfiles_stow_packages }}"
   changed_when: stow_deploy.stderr | regex_search('LINK:')

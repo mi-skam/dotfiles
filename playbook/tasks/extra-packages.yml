@@ -1,5 +1,8 @@
 ---
 - name: Install global Composer packages.
+  environment:
+    # add homebrew to the PATH, so that ansible can find composer.
+    PATH: "{{ ansible_env.PATH }}:/home/linuxbrew/.linuxbrew/bin:/opt/homebrew/bin"
   composer:
     command: "{{ (item.state | default('present') == 'absent') | ternary('remove', 'require') }}"
     arguments: "{{ item.name | default(item) }} {{ item.version | default('@stable') }}"
@@ -8,6 +11,9 @@
   loop: "{{ composer_packages }}"
 
 - name: Install global NPM packages.
+  environment:
+    # add homebrew to the PATH, so that ansible can find npm.
+    PATH: "{{ ansible_env.PATH }}:/home/linuxbrew/.linuxbrew/bin:/opt/homebrew/bin"
   npm:
     name: "{{ item.name | default(item) }}"
     state: "{{ item.state | default('present') }}"
@@ -17,6 +23,9 @@
   loop: "{{ npm_packages }}"
 
 - name: Install global Pip packages.
+  environment:
+    # add homebrew to the PATH, so that ansible can find pip.
+    PATH: "{{ ansible_env.PATH }}:/home/linuxbrew/.linuxbrew/bin:/opt/homebrew/bin"
   pip:
     name: "{{ item.name | default(item) }}"
     state: "{{ item.state | default('present') }}"
@@ -25,6 +34,9 @@
   loop: "{{ pip_packages }}"
 
 - name: Install global Ruby gems.
+  environment:
+    # add homebrew to the PATH, so that ansible can find ruby.
+    PATH: "{{ ansible_env.PATH }}:/home/linuxbrew/.linuxbrew/bin:/opt/homebrew/bin"
   gem:
     name: "{{ item.name | default(item) }}"
     state: "{{ item.state | default('present') }}"

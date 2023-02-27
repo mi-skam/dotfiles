@@ -1,2 +1,2 @@
 #!/bin/sh
-ansible-playbook -K --limit localhost main.yml
+ansible-playbook -K --limit ${1:-localhost} main.yml

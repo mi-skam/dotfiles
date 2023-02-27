@@ -1,6 +1,4 @@
 ---
-downloads: ~/.ansible-downloads/
-
 configure_dotfiles: true
 configure_terminal: true
 configure_osx: false
@@ -17,13 +15,6 @@ dockitems_persist: []
 # - name: "Sublime Text"
 #   path: "/Applications/Sublime Text.app/"
 #   pos: 5
-
-dotfiles_repo_local_destination: "{{ ansible_env.HOME }}/.dotfiles"
-
-dotfiles_repo: "https://github.com/mi-skam/dotfiles"
-dotfiles_repo_version: master
-dotfiles_repo_accept_hostkey: true
-dotfiles_repo_update: false
 
 dotfiles_stow_packages:
   - direnv
@@ -104,15 +95,6 @@ homebrew_cask_apps:
   - utm
   - visual-studio-code
   - vlc
-  # Quick Look Plugins
-  - "qlstephen"
-  - "qlmarkdown"
-  - "quicklook-json"
-  - "qlimagesize"
-  - "suspicious-package"
-  - "apparency"
-  - "quicklookase"
-  - "qlvideo"
 
 mas_installed_apps: []
 mas_email: ""

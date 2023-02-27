@@ -1,0 +1,4 @@
+---
+dotfiles_repo_local: "{{ ansible_env.HOME }}/dev/dotfiles"
+dotfiles_repo_force: false
+dotfiles_repo_update: false
