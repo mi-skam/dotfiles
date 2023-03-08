@@ -45,6 +45,7 @@ homebrew_installed_packages:
   - starship
   - stow
   - syncthing
+  - thefuck
   - topgrade
   - tree
   - wget
