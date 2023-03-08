@@ -15,6 +15,7 @@ prepend-path "/usr/local/sbin"
 prepend-path "$HOMEBREW_PREFIX/bin"
 prepend-path "$HOMEBREW_PREFIX/opt/openjdk/bin"
 prepend-path "$HOME/.cargo/bin"
+prepend-path "$HOME/.config/composer/vendor/bin"
 prepend-path "$HOME/bin"
 prepend-path "$HOME/.local/bin"
 

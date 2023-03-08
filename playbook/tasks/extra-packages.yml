@@ -3,11 +3,12 @@
   environment:
     # add homebrew to the PATH, so that ansible can find composer.
     PATH: "{{ ansible_env.PATH }}:/home/linuxbrew/.linuxbrew/bin:/opt/homebrew/bin"
-  composer:
+  community.general.composer:
     command: "{{ (item.state | default('present') == 'absent') | ternary('remove', 'require') }}"
     arguments: "{{ item.name | default(item) }} {{ item.version | default('@stable') }}"
     # Ansible 2.4 supports `global_command` making `working_dir` optional.
-    working_dir: "{{ lookup('env', 'COMPOSER_HOME') | default('~/.composer', true) }}"
+    # working_dir: "{{ lookup('env', 'COMPOSER_HOME') | default('~/.config/composer', true) }}"
+    global_command: true
   loop: "{{ composer_packages }}"
 
 - name: Install global NPM packages.

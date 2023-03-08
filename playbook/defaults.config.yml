@@ -26,6 +26,7 @@ dotfiles_stow_packages:
 
 homebrew_installed_packages:
   - bash
+  - composer
   - direnv
   - fd
   - fnm
@@ -37,6 +38,7 @@ homebrew_installed_packages:
   - micromamba
   - node
   - openssl
+  - php
   - rg
   - rust
   - starship
@@ -104,10 +106,8 @@ mas_password: ""
 # Install packages from other package managers.
 # Note: You are responsible for making sure the required package managers are
 # installed, eg. through homebrew.
-composer_packages: []
-# - name: drush
-#   state: present # present/absent, default: present
-#   version: "^8.1" # default: N/A
+composer_packages:
+  - name: getkirby/cli
 gem_packages: []
 # - name: bundler
 #   state: present # present/absent/latest, default: present
