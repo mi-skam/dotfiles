@@ -25,6 +25,7 @@ dotfiles_stow_packages:
   - starship
 
 homebrew_installed_packages:
+  - asciinema
   - bash
   - composer
   - direnv
