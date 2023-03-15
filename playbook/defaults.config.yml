@@ -86,6 +86,7 @@ homebrew_cask_apps:
   - karabiner-elements
   - keepassxc
   - libreoffice
+  - maccy
   - notion
   - qbittorrent
   - rawtherapee
