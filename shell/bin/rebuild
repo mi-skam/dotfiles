@@ -1,2 +1,15 @@
 #!/bin/sh
-ansible-playbook -K --limit ${1:-localhost} -i $DOTFILES_DIR/playbook/inventory $DOTFILES_DIR/playbook/main.yml
+
+set -eou pipefail
+
+ANSIBLE_PLAYBOOK_CMD="ansible-playbook"
+
+if
+    ! command -v ANSIBLE_PLAYBOOK_CMD &
+    >/dev/null
+then
+    MICROMAMBA_ENV_PREFIX=$(micromamba env list --json | jq -r '.envs|map(select(contains("ansible")))|.[0]')
+    ANSIBLE_PLAYBOOK_CMD="${MICROMAMBA_ENV_PREFIX}/bin/${ANSIBLE_PLAYBOOK_CMD}"
+fi
+
+${ANSIBLE_PLAYBOOK_CMD} -K --limit ${1:-localhost} -i $DOTFILES_DIR/playbook/inventory $DOTFILES_DIR/playbook/main.yml

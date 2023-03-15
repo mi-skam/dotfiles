@@ -36,6 +36,7 @@ homebrew_installed_packages:
   - git-lfs
   - github/gh/gh
   - gpg
+  - jq
   - micromamba
   - node
   - openssl
