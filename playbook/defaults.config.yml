@@ -124,6 +124,7 @@ npm_packages:
   - name: npm-check
   - name: prettier
   - name: tailwindcss
+  - name: bun
 
 # - name: webpack
 #   state: present # present/absent/latest, default: present
