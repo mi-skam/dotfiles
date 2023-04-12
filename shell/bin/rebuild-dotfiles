@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+ansible-playbook --limit ${1:-localhost} --tags dotfiles main.yml
