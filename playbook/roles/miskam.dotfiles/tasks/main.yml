@@ -1,6 +1,6 @@
 ---
 - name: Clone dotfiles to dotfiles_home.
-  git:
+  ansible.builtin.git:
     repo: "{{ dotfiles_repo }}"
     dest: "{{ dotfiles_repo_local }}"
     version: "{{ dotfiles_repo_version }}"
@@ -20,7 +20,7 @@
   changed_when: false
 
 - name: Capturing the filenames from stow_simulate.
-  set_fact:
+  ansible.builtin.set_fact:
     files_foreign: "{{ stow_simulate.stderr | regex_findall('existing target is neither a link nor a directory: (.+)', '\\1') }}"
     files_conflict: "{{ stow_simulate.stderr | regex_findall('existing target is not owned by stow: (.+)', '\\1') }}"
   when: stow_simulate.stderr is defined
@@ -43,7 +43,7 @@
   environment:
     # add homebrew to the PATH, so that ansible can find stow.
     PATH: "{{ ansible_env.PATH }}:/home/linuxbrew/.linuxbrew/bin:/opt/homebrew/bin"
-  ansible.builtin.shell: stow -v -R -t "{{ dotfiles_target }}" "{{ item }}"
+  ansible.builtin.command: stow -v -R -t "{{ dotfiles_target }}" "{{ item }}"
   args:
     chdir: "{{ dotfiles_repo_local }}"
   register: stow_deploy

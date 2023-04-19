@@ -33,5 +33,6 @@
       tags: ["dock"]
 
   tasks:
-    - import_tasks: tasks/extra-packages.yml
+    - name: Include extra packages.
+      ansible.builtin.import_tasks: tasks/extra-packages.yml
       tags: ["extra-packages"]

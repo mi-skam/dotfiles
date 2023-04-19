@@ -15,7 +15,7 @@
   environment:
     # add homebrew to the PATH, so that ansible can find npm.
     PATH: "{{ ansible_env.PATH }}:/home/linuxbrew/.linuxbrew/bin:/opt/homebrew/bin"
-  npm:
+  community.general.npm:
     name: "{{ item.name | default(item) }}"
     state: "{{ item.state | default('present') }}"
     version: "{{ item.version | default(omit) }}"
@@ -27,7 +27,7 @@
   environment:
     # add homebrew to the PATH, so that ansible can find pip.
     PATH: "{{ ansible_env.PATH }}:/home/linuxbrew/.linuxbrew/bin:/opt/homebrew/bin"
-  pip:
+  ansible.builtin.pip:
     name: "{{ item.name | default(item) }}"
     state: "{{ item.state | default('present') }}"
     version: "{{ item.version | default(omit) }}"
@@ -38,7 +38,7 @@
   environment:
     # add homebrew to the PATH, so that ansible can find ruby.
     PATH: "{{ ansible_env.PATH }}:/home/linuxbrew/.linuxbrew/bin:/opt/homebrew/bin"
-  gem:
+  community.general.gem:
     name: "{{ item.name | default(item) }}"
     state: "{{ item.state | default('present') }}"
     version: "{{ item.version | default(omit) }}"

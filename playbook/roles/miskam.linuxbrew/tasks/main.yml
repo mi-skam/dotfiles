@@ -13,5 +13,8 @@
     NONINTERACTIVE: "1"
   when: not homebrew_installed.stat.exists
 
-- include_tasks: tap.yml
-- include_tasks: brew.yml
+- name: Ensure homebrew taps are tapped.
+  ansible.builtin.include_tasks: tap.yml
+
+- name: Manaeg homebrew packages.
+  ansible.builtin.include_tasks: brew.yml

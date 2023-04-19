@@ -84,6 +84,7 @@ homebrew_cask_apps:
   - font-sf-mono-nerd-font
   - gimp
   - google-chrome
+  - google-drive
   - karabiner-elements
   - keepassxc
   - libreoffice
