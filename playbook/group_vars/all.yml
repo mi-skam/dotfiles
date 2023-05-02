@@ -107,11 +107,6 @@ homebrew_cask_apps:
   - visual-studio-code
   - vlc
 
-mas_installed_apps:
-  - { id: 1475387142, name: "Tailscale" }
-
-mas_password: ""
-
 # Install packages from other package managers.
 # Note: You are responsible for making sure the required package managers are
 # installed, eg. through homebrew.

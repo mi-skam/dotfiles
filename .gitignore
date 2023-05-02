@@ -1,10 +1,8 @@
-playbook/config.yml
+playbook/overrides.yml
 
 # We install "most" roles from requirements
 playbook/roles/*
 !playbook/roles/miskam*
-
-
 
 # temporary files
 *.swp

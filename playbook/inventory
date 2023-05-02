@@ -1,22 +1,15 @@
-localhost  ansible_connection=local
+localhost           ansible_connection=local
 
 [test]
-ansible1   ansible_host=192.168.50.4 ansible_user=vagrant ansible_ssh_private_key_file=~/.vagrant.d/insecure_private_key
-ansible2   ansible_host=192.168.50.5 ansible_user=vagrant ansible_ssh_private_key_file=~/.vagrant.d/insecure_private_key
+ansible1            ansible_host=192.168.50.4 ansible_user=vagrant ansible_ssh_private_key_file=~/.vagrant.d/insecure_private_key
+ansible2            ansible_host=192.168.50.5 ansible_user=vagrant ansible_ssh_private_key_file=~/.vagrant.d/insecure_private_key
 
 [server]
-marco      ansible_host=marco.miskam.xyz 
+marco               ansible_host=marco.miskam.xyz 
 
-[dev]
-localhost  ansible_connection=local
+[homelab]
+mbp.homelab         ansible_host=192.168.178.165
 
 [wow]
-mbp        ansible_host=10.100.120.6
-msi-gs65   ansible_host=10.100.120.94 ansible_port=2022 
-
-[wow:children]
-server
-
-[my:children]
-dev
-server
+mbp.wow             ansible_host=10.100.120.6
+msi-gs65            ansible_host=10.100.120.94 ansible_port=2022 

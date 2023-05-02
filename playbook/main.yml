@@ -2,14 +2,11 @@
 - hosts: all
   name: Bootstrap system.
 
-  vars_files:
-    - defaults.config.yml
-
   pre_tasks:
     - name: Include playbook configuration.
       ansible.builtin.include_vars: "{{ item }}"
       with_fileglob:
-        - "{{ playbook_dir }}/config.yml"
+        - "{{ playbook_dir }}/overrides.yml"
       tags: ["always"]
 
   roles:
@@ -25,9 +22,6 @@
     - role: miskam.dotfiles
       when: configure_dotfiles
       tags: ["dotfiles"]
-    - role: geerlingguy.mac.mas
-      when: ansible_os_family == 'Darwin' and (mas_installed_apps or mas_installed_app_ids)
-      tags: ["mas"]
     - role: geerlingguy.mac.dock
       when: ansible_os_family == 'Darwin' and configure_dock
       tags: ["dock"]

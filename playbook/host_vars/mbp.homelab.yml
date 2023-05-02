@@ -3,3 +3,15 @@ dotfiles_repo_local: "{{ ansible_env.HOME }}/Development/areas/dotfiles"
 dotfiles_repo_force: false
 dotfiles_repo_update: false
 configure_dock: false
+
+dotfiles_stow_packages:
+  - direnv
+  - git
+  - hammerspoon
+  - limelight
+  - micromamba
+  - prettier
+  - shell
+  - skhd
+  - starship
+  - yabai
