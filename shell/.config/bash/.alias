@@ -40,12 +40,12 @@ alias .....="cd ../../../.."
 alias -- -="cd -"               # Go to previous dir with -
 alias cd.='cd $(readlink -f .)' # Go to real dir (i.e. if current dir is linked)
 
-# npm
+# # npm
 
-alias ni="npm install"
-alias nu="npm uninstall"
-alias nri="rm -r node_modules && npm install"
-alias ncd="npm-check -su"
+# alias ni="npm install"
+# alias nu="npm uninstall"
+# alias nri="rm -r node_modules && npm install"
+# alias ncd="npm-check -su"
 
 # Network
 # TODO: ip conflicts with iproute2
