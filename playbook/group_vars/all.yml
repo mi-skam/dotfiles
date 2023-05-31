@@ -79,6 +79,7 @@ homebrew_cask_apps:
   - blender
   - cyberduck
   - digikam
+  - docker
   - barrier
   - discord
   - firefox
