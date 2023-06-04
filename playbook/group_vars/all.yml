@@ -49,6 +49,7 @@ homebrew_installed_packages:
   - thefuck
   - topgrade
   - tree
+  - yarn
   - wget
   - yt-dlp
   - zoxide

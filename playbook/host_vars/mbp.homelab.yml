@@ -1,5 +1,5 @@
 ---
-dotfiles_repo_local: "{{ ansible_env.HOME }}/Development/areas/dotfiles"
+dotfiles_repo_local: "{{ ansible_env.HOME }}/Development/dotfiles"
 dotfiles_repo_force: false
 dotfiles_repo_update: false
 configure_dock: false
