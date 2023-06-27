@@ -27,7 +27,7 @@ HOMEBREW_PREFIX=$(brew --prefix)
 
 # Source the dotfiles (order matters)
 
-for DOTFILE in $HOME/.config/bash/.{function,function_*,path,environment,alias,bash_completions,thefuck,fzf,fnm,grep,direnv,starship,zoxide}; do
+for DOTFILE in $HOME/.config/bash/.{function,function_*,path,environment,alias,bash_completions,thefuck,fzf,fnm,grep,direnv,starship,zoxide,bun_completions}; do
   . "$DOTFILE"
 done
 
