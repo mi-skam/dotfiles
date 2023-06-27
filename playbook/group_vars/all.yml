@@ -74,10 +74,12 @@ homebrew_taps:
   - homebrew/core
   - homebrew/cask
   - epk/epk
+  - macos-fuse-t/homebrew-cask
 
 homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
   - blender
+  - cryptomator
   - cyberduck
   - digikam
   - docker
@@ -86,6 +88,8 @@ homebrew_cask_apps:
   - firefox
   - font-jetbrains-mono
   - font-sf-mono-nerd-font
+  - fuse-t
+  - fuse-t-sshfs
   - gimp
   - google-chrome
   - google-drive
@@ -125,6 +129,8 @@ npm_packages:
   - name: prettier
   - name: tailwindcss
   - name: bun
+  - name: ts-node
+  - name: typescript
 
 # - name: webpack
 #   state: present # present/absent/latest, default: present
