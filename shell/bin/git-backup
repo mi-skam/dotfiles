@@ -1,0 +1,23 @@
+#!/bin/sh
+
+set -eu
+
+# Where I want my versions stored
+versionspath=~/backup/syncthing
+
+# The parameters we get from syncthing
+folderpath="$1"
+filepath="$2"
+
+outpath=`dirname "$versionspath/$filepath"`
+
+mkdir -p "$outpath"
+
+# Then move the file there
+mv -f "$folderpath/$filepath" "$versionspath/$filepath"
+
+# go to repo 
+cd "$versionspath"
+
+git add .
+git commit -m "`date +'%Y-%m-%d %H:%M:%S'` - $filepath"
