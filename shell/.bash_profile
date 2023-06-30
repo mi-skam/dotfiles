@@ -38,7 +38,7 @@ if is-linux; then
 fi
 
 if is-macos; then
-  for DOTFILE in $HOME/.config/bash/.{function,environment,alias,micromamba}.macos; do
+  for DOTFILE in $HOME/.config/bash/.{function,environment,alias,micromamba,nix}.macos; do
     . "$DOTFILE"
   done
 fi
